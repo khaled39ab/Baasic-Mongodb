@@ -16,13 +16,21 @@ app.use(express.json())
 
 const uri = "mongodb+srv://dbuser1:S6HEPXaS.!nA4c4@cluster0.exvps.mongodb.net/?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
-client.connect(err => {
-    const collection = client.db("test").collection("devices");
-    // perform actions on the collection object
-    console.log('db connected');
-    client.close();
-});
 
+async function run() {
+    try {
+        const userCollection = client.db("foodExpress").collection("user");
+
+        const user = { name: 'Saim Islam', email: 'saim@gmail.com' }
+        const result = await userCollection.insertOne(user);
+        console.log(`User Inserted with Id: ${result.insertedId}`);
+
+    } finally {
+        // await client.close();
+    }
+}
+
+run().catch(console.dir);
 
 app.get('/', (req, res) => {
     res.send('Running my node in CRUD server')
