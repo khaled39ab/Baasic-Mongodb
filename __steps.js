@@ -31,7 +31,7 @@
  * 2- handle the form submit and create user
  * 3- Server side: create user post method to receive data on the backend
  * 4- Client side: set fetch with post headers body   
- * 5- Make sure that return a post api
+ * 5- Make sure that return json post api
  * 
  * 
  * **/

@@ -21,11 +21,11 @@ async function run() {
     try {
         const userCollection = client.db("foodExpress").collection("user");
 
-       app.post('/user', (req, res) =>{
-        const newUser = req.body;
-        console.log('adding new user:', newUser);
-        res.send('send data receive')
-       });
+        app.post('/user', (req, res) => {
+            const newUser = req.body;
+            console.log('adding new user:', newUser);
+            res.send({ data: 'send data receive' })
+        });
 
     } finally {
         // await client.close();
