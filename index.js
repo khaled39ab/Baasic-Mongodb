@@ -32,7 +32,7 @@ async function run() {
 
             const user = await cursor.toArray();
             res.send(user)
-        })
+        });
 
         app.post('/user', async (req, res) => {
             const newUser = req.body;

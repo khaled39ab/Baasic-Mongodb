@@ -33,4 +33,13 @@
  * 4- Client side: set fetch with post headers body   
  * 5- Make sure that return json post api
  * 
+ * ---------------------------------------
+ * Load data to client side
+ * ---------------------------------------
+ * 1- Create get api on the server
+ * 2- Create query object
+ * 3- Collection.find(query)
+ * 4- Cursor.toArray()
+ * 5- Return the result
+ * 
  * **/
