@@ -41,5 +41,11 @@
  * 3- Collection.find(query)
  * 4- Cursor.toArray()
  * 5- Return the result
+ * 6- Fetch from client useEffect and display
+ * 
+ * ------------------------------------------
+ * Delete
+ * ------------------------------------------
+ * 1-  
  * 
  * **/
