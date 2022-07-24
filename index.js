@@ -37,12 +37,37 @@ async function run() {
             res.send(user)
         });
 
+        app.get('/update/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const result = await userCollection.findOne(query);
+            res.send(result);
+        });
+
         // post user: create a user
         app.post('/user', async (req, res) => {
             const newUser = req.body;
             console.log('adding new user:', newUser);
             const result = await userCollection.insertOne(newUser);
             res.send(result)
+        });
+
+        // update user
+        app.put('/update/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: ObjectId(id) };
+            const updateUser = req.body;
+            const options = { upsert: true };
+
+            const updatedUser = {
+                $set: {
+                    name: updateUser.name,
+                    email: updateUser.email
+                }
+            }
+
+            const result = await userCollection.updateOne(query, updatedUser, options);
+            res.send(result);
         });
 
         // Delete a user
@@ -52,7 +77,7 @@ async function run() {
 
             const result = await userCollection.deleteOne(query);
             res.send(result)
-        })
+        });
 
     } finally {
         // await client.close();
