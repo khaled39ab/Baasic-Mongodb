@@ -25,7 +25,13 @@ async function run() {
             res.send(result)
         });
 
-        
+        app.get('/users', async(req, res) => {
+            const query = {};
+            const cursor = userCollection.find(query);
+            
+            const result = await cursor.toArray();
+            res.send(result)
+        });
     }
     finally {
         // await client.close();
