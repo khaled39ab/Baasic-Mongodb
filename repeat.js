@@ -18,17 +18,17 @@ async function run() {
     try {
         const userCollection = client.db("repeatExpress").collection("user");
 
-        app.post('/users', async (req, res) => {
+        app.post('/user', async (req, res) => {
             const newUser = req.body;
-            console.log('new user', newUser);
+            // console.log('new user', newUser);
             const result = await userCollection.insertOne(newUser);
             res.send(result)
         });
 
-        app.get('/users', async(req, res) => {
+        app.get('/user', async(req, res) => {
             const query = {};
             const cursor = userCollection.find(query);
-            
+
             const result = await cursor.toArray();
             res.send(result)
         });
